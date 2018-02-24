@@ -1,16 +1,27 @@
 import React from 'react';
-import {Text, View, AppRegistry} from 'react-native';
+import {View, AppRegistry} from 'react-native';
 
-import Header from './src/components/header';
-import Body from './src/components/body';
+import MainPage from './src/components/mainPage';
+import Vocabulary from './src/components/Vocabulary';
+import {StackNavigator} from 'react-navigation';
 
+import Styles from './src/styleSheet';
 
+const RootStack = StackNavigator({
+        Home: {screen: MainPage,},
+        Vocabulary: {screen: Vocabulary,},
+    },
+    {
+        initialRouteName: 'Home',
+    }
+);
 const App = () => {
     return (
-        <View>
-            <Header/>
-            <Body userName = 'Mighty1617'/>
+
+        <View style={Styles.body}>
+            <RootStack/>
         </View>
+
     );
 };
 
