@@ -16,7 +16,7 @@ import {StyleSheet} from 'react-native';
         shadowColor:'black',
         shadowOffset:{width:10,height:30},
         shadowOpacity:0.2,
-        height:200,
+        height:300,
         elevation: 50,
     },
      btn:{
@@ -32,6 +32,14 @@ import {StyleSheet} from 'react-native';
      },
      btnTxt:{
          color:'white'
+     },
+     txtInput:{
+         padding:10,
+         color:'#1D3767',
+         fontSize:15,
+         height: 40,
+         width:200
+
      }
 });
 

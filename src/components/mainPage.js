@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {Text, View,TouchableOpacity} from 'react-native';
 
+import {} from 'react-native-elements';
+
+
 import Styles from '../styleSheet';
 
 
@@ -22,6 +25,7 @@ export default class MainPage extends Component {
                     <TouchableOpacity style = {Styles.btn}>
                         <Text style={Styles.btnTxt}>Practice</Text>
                     </TouchableOpacity>
+
                 </View>
 
         );
