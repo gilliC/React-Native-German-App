@@ -8,16 +8,24 @@ import AddAWord from './src/components/addAWord';
 
 import Styles from './src/styleSheet';
 
-const RootStack = StackNavigator({
+import App from './src/components/tryRedux';
+
+
+AppRegistry.registerComponent('ProjTry1', () => App);
+
+
+/**
+ *
+ * const RootStack = StackNavigator({
         Home: {screen: MainPage,},
         Vocabulary: {screen: Vocabulary,},
     AddAWord:{screen:AddAWord,}
     },
-    {
-        initialRouteName: 'Home',
-    }
-);
-const App = () => {
+ {
+     initialRouteName: 'Home',
+ }
+ );
+ const App = () => {
     return (
 
         <View style={Styles.body}>
@@ -26,5 +34,4 @@ const App = () => {
 
     );
 };
-
-AppRegistry.registerComponent('ProjTry1', () => App);
+ **/

@@ -1,25 +1,30 @@
 import React, {Component} from 'react';
-import {Text, View,TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 
 import Styles from '../styleSheet';
 
-export default class Vocabulary extends Component{
+import VocabularyList from './vocabularyList';
 
-    constructor(props){
+export default class Vocabulary extends Component {
+
+    constructor(props) {
         super(props);
     }
-    onPress(){
+
+    onPress() {
         this.props.navigation.navigate('AddAWord');
 
     }
-    render(){
-        return(
+
+    render() {
+        return (
             <View>
-                <View style = {Styles.container}>
-                <Text style={style.h1}>Vocabulary</Text>
-                    <TouchableOpacity style = {Styles.btn} onPress = {this.onPress.bind(this)}>
+                <View style={Styles.container}>
+                    <Text style={style.h1}>Vocabulary</Text>
+                    <TouchableOpacity style={Styles.btn} onPress={this.onPress.bind(this)}>
                         <Text style={Styles.btnTxt}>Add a word</Text>
                     </TouchableOpacity>
+                    <VocabularyList/>
                 </View>
             </View>
         );
@@ -27,8 +32,9 @@ export default class Vocabulary extends Component{
 
 }
 const style = {
-    h1:{
-        fontSize:20,
-        padding:10
+    h1: {
+        fontSize: 20,
+        padding: 10,
+        alignItems: 'center'
     }
 }
