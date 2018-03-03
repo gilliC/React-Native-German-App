@@ -37,4 +37,4 @@ const style = {
         padding: 10,
         alignItems: 'center'
     }
-}
+};

@@ -1,38 +1,56 @@
 [
   {
-    id:0,
-    "german":"Hund",
-    "english":"Dog",
-    "gender":"Der"
+    id: 0,
+    "german": "Hund",
+    "english": "Dog",
+    "gender": "Der"
   },
   {
-    id:1,
-    "german":"Pferd",
-    "english":"Horse",
-    "gender":"Das"
+    id: 1,
+    "german": "Pferd",
+    "english": "Horse",
+    "gender": "Das"
   },
   {
-    id:2,
-    "german":"Katze",
-    "english":"Cat",
-    "gender":"Die"
+    id: 2,
+    "german": "Katze",
+    "english": "Cat",
+    "gender": "Die"
   },
   {
-    id:0,
-    "german":"Hund",
-    "english":"Dog",
-    "gender":"Der"
+    id: 3,
+    "german": "Hund",
+    "english": "Dog",
+    "gender": "Der"
   },
   {
-    id:1,
-    "german":"Pferd",
-    "english":"Horse",
-    "gender":"Das"
+    id: 4,
+    "german": "Pferd",
+    "english": "Horse",
+    "gender": "Das"
   },
   {
-    id:2,
-    "german":"Katze",
-    "english":"Cat",
-    "gender":"Die"
+    id: 5,
+    "german": "Katze",
+    "english": "Cat",
+    "gender": "Die"
+  },
+  {
+    id: 6,
+    "german": "Hund",
+    "english": "Dog",
+    "gender": "Der"
+  },
+  {
+    id: 7,
+    "german": "Pferd",
+    "english": "Horse",
+    "gender": "Das"
+  },
+  {
+    id: 8,
+    "german": "Katze",
+    "english": "Cat",
+    "gender": "Die"
   }
 ]

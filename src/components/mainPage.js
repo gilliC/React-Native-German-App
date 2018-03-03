@@ -11,20 +11,26 @@ export default class MainPage extends Component {
     constructor(props) {
         super(props);
     }
-    onPress(){
+    onPressVocabulary(){
         this.props.navigation.navigate('Vocabulary');
     }
-    render() {
+    onPressPractice() {
+        this.props.navigation.navigate('Practice');
+
+    }
+
+        render() {
         return (
 
-                <View style={Styles.container}>
-                    <TouchableOpacity onPress={this.onPress.bind(this)} style = {Styles.btn}>
+                <View>
+                    <TouchableOpacity onPress={this.onPressVocabulary.bind(this)} style = {Styles.btn}>
                         <Text style={Styles.btnTxt}>Vocabulary</Text>
                     </TouchableOpacity>
                     <Text style={style.h1}>Hello User</Text>
                     <TouchableOpacity style = {Styles.btn}>
-                        <Text style={Styles.btnTxt}>Practice</Text>
+                        <Text onPress={this.onPressPractice.bind(this)} style={Styles.btnTxt}>Practice</Text>
                     </TouchableOpacity>
+                    <Text>Try8</Text>
 
                 </View>
 
@@ -37,4 +43,4 @@ const style = {
         fontSize:20,
         padding:10
     }
-}
+};

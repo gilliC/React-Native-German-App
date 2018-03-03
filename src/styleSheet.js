@@ -6,15 +6,16 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'stretch',
-        backgroundColor: '#f6f6f7'
+        backgroundColor: '#F2F4F3'
 
     },
     container: {
-        backgroundColor: '#D8DBE2',
-        justifyContent:'center'
+        backgroundColor: '#F2F4F3',
+        justifyContent:'center',
+        alignItems: 'center'
     },
     containrWithShadow: {
-        backgroundColor: '#D8DBE2',
+        backgroundColor: '#F2F4F3',
         justifyContent: 'center',
         alignItems: 'center',
         shadowColor: 'black',
@@ -25,17 +26,14 @@ const styles = StyleSheet.create({
     },
     btn: {
         backgroundColor: '#1D3767',
-        padding: 10,
         borderRadius: 10,
-        borderStyle: 'solid'
-    },
-    btnPress: {
-        backgroundColor: '#D8DBE2',
-        padding: 10,
-        borderColor: '#1D3767'
+        borderStyle: 'solid',
+        paddingVertical:10,
+        paddingHorizontal:20,
     },
     btnTxt: {
-        color: 'white'
+        color: 'white',
+        fontSize:20
     },
     txtInput: {
         padding: 10,
@@ -45,10 +43,20 @@ const styles = StyleSheet.create({
         width: 200
 
     },
-    itemList:{
-        alignItems:"flex-start"
+    //        flex: 1,
 
-    }
+    itemContainer: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        borderRadius: 30,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        marginTop:10,
+        paddingHorizontal:80,
+        paddingVertical:10
+
+    },
 });
 
 export default styles;
