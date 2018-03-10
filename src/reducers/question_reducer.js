@@ -1,9 +1,9 @@
 import data from './vocabularyWords.json';
-export default (state = null,action) =>{
+export default (state = {},action) =>{
 
     switch (action.type){
         case 'get_word_details':
-            return return "Working";
+            return data[action.payload];
         default:
             return state;
     }

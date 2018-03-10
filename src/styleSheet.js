@@ -43,8 +43,6 @@ const styles = StyleSheet.create({
         width: 200
 
     },
-    //        flex: 1,
-
     itemContainer: {
         flexDirection: 'row',
         alignItems: 'flex-end',

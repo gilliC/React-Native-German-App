@@ -11,12 +11,13 @@ import * as actions from '../actions/index';
  class Practice extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedIndex: 0, questions:[0,1,2]}
+        this.state = {selectedIndex: 1, questions:[0,1,2], questionIndex:0,buttons:['Das', 'Die', 'Der'],errors:''};
+
 
     }
 
     componentWillMount(){
-        this.props.GetWordDetails(this.state.selectedIndex);
+        this.props.GetWordDetails(this.state.questionIndex);
 
     }
 
@@ -26,24 +27,26 @@ import * as actions from '../actions/index';
 
     onPress() {
 
+        if (this.props.questionDetails.gender === this.state.buttons[this.state.selectedIndex]){
+            this.setState({errors:'Work'});
+        };
+
     }
 
     render() {
-
-        const buttons = ['Das', 'Die', 'Der'];
+        const questionD = this.props.questionDetails;
         const {selectedIndex} = this.state;
-        let errors = "";
 
 
         return (
             <View  style={Styles.container}>
-                <Text style={style.h1}>{this.props.questionDetails}</Text>
+                <Text style={style.h1}>{questionD.german}</Text>
+                <Text style={style.h2}>{questionD.english}</Text>
 
                 <ButtonGroup
                     onPress={this.updateIndex.bind(this)}
                     selectedIndex={selectedIndex}
-                    buttons={buttons}
-                    selectedButtonStyle={style.btnContainer}
+                    buttons={ this.state.buttons}
                 />
 
                 <Button
@@ -52,7 +55,7 @@ import * as actions from '../actions/index';
                     title='Check'
                     onPress={this.onPress.bind(this)}
                 />
-                <FormValidationMessage>{errors}</FormValidationMessage>
+                <FormValidationMessage>{this.state.errors}</FormValidationMessage>
 
             </View>
         );
@@ -68,7 +71,4 @@ const style = {
 
     h2: {fontSize: 15},
     h1: {fontSize: 25},
-    btnContainer:{
-
-    }
 };
