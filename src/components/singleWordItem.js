@@ -15,24 +15,29 @@ class SingleWordItem extends Component {
         let genderStyle;
         switch (gender) {
             case "Der":
-                genderStyle = style.der;
+                genderStyle = {
+                    backgroundColor: '#58A4B0'
+                };
                 break;
             case "Das":
-                genderStyle = style.das;
+                genderStyle = {
+                    backgroundColor: '#1E6446'
+                };
                 break;
 
             case "Die":
-                genderStyle = style.die;
+                genderStyle = {
+                    backgroundColor: '#734B5E'
+                };
                 break;
 
         }
 
 
         return (
-            <View style={Styles.itemList}>
-                <Text style={genderStyle}> {gender} {this.props.word.german}</Text>
-                <Text style={style.h2}>{this.props.word.english}</Text>
-                <Divider style={{backgroundColor: '#58A4B0'}}/>
+            <View style={[Styles.itemContainer, genderStyle]}>
+                <Text style={style.h1}> {gender} {this.props.word.german} </Text>
+                <Text style={style.h2}>{this.props.word.english} </Text>
 
             </View>
 
@@ -46,9 +51,13 @@ export default SingleWordItem;
 
 
 const style = {
-    h2: {fontSize: 15,},
-    der: {fontSize: 25, color: "#1D3767"},
-    die: {fontSize: 25, color: "#734B5E"},
-    das: {fontSize: 25, color: "#CACF85"}
-
+    h1: {
+        fontSize: 25,
+        color: 'white'
+    },
+    h2: {
+        fontSize: 15,
+        color: 'white',
+        paddingLeft:10
+    }
 };

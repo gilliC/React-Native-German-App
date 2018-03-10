@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'stretch',
         backgroundColor: '#F2F4F3'
 
     },
@@ -13,16 +12,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#F2F4F3',
         justifyContent:'center',
         alignItems: 'center'
-    },
-    containrWithShadow: {
-        backgroundColor: '#F2F4F3',
-        justifyContent: 'center',
-        alignItems: 'center',
-        shadowColor: 'black',
-        shadowOffset: {width: 10, height: 30},
-        shadowOpacity: 0.2,
-        height: 300,
-        elevation: 50,
     },
     btn: {
         backgroundColor: '#1D3767',
@@ -33,7 +22,9 @@ const styles = StyleSheet.create({
     },
     btnTxt: {
         color: 'white',
-        fontSize:20
+        fontSize:20,
+        alignItems : 'center',
+
     },
     txtInput: {
         padding: 10,
@@ -48,13 +39,14 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'center',
         borderRadius: 30,
-        borderStyle: 'solid',
-        borderWidth: 1,
         marginTop:10,
         paddingHorizontal:80,
-        paddingVertical:10
+        paddingVertical:10,
+        marginLeft:10,
+        marginRight:10
 
     },
+
 });
 
 export default styles;

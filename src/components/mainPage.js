@@ -21,8 +21,8 @@ export default class MainPage extends Component {
 
         render() {
         return (
-
-                <View>
+            <View style={Styles.container}>
+                <View >
                     <TouchableOpacity onPress={this.onPressVocabulary.bind(this)} style = {Styles.btn}>
                         <Text style={Styles.btnTxt}>Vocabulary</Text>
                     </TouchableOpacity>
@@ -31,6 +31,7 @@ export default class MainPage extends Component {
                         <Text onPress={this.onPressPractice.bind(this)} style={Styles.btnTxt}>Practice</Text>
                     </TouchableOpacity>
                 </View>
+            </View>
 
         );
     }

@@ -30,7 +30,6 @@ class VocabularyList extends Component {
     render() {
         return (
             <View>
-                <Text>Vocabulary List</Text>
                 <ListView
                     dataSource={this.dataSource}
                     renderRow={this.renderRow}
