@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, ListView} from 'react-native';
 import {connect} from 'react-redux';
+import * as actions from '../actions/index';
+
 
 import SingleWordItem from './singleWordItem';
 
@@ -46,4 +48,4 @@ const mapStateToProps = state => {
 
 };
 
-export default connect(mapStateToProps)(VocabularyList);
+export default connect(mapStateToProps,actions)(VocabularyList);

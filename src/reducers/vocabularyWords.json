@@ -19,38 +19,38 @@
   },
   {
     id: 3,
-    "german": "Hund",
-    "english": "Dog",
-    "gender": "Der"
-  },
-  {
-    id: 4,
-    "german": "Pferd",
-    "english": "Horse",
+    "german": "Jahr",
+    "english": "Year",
     "gender": "Das"
   },
   {
-    id: 5,
-    "german": "Katze",
-    "english": "Cat",
+    id: 4,
+    "german": "Zeit",
+    "english": "Time",
     "gender": "Die"
   },
   {
+    id: 5,
+    "german": "Beispiel",
+    "english": "Example",
+    "gender": "Das"
+  },
+  {
     id: 6,
-    "german": "Hund",
-    "english": "Dog",
+    "german": "Mensch",
+    "english": "Human being",
     "gender": "Der"
   },
   {
     id: 7,
-    "german": "Pferd",
-    "english": "Horse",
-    "gender": "Das"
+    "german": "Tag",
+    "english": "Day",
+    "gender": "Der"
   },
   {
     id: 8,
-    "german": "Katze",
-    "english": "Cat",
-    "gender": "Die"
+    "german": "Land",
+    "english": "Country",
+    "gender": "Das"
   }
 ]

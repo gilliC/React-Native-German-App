@@ -8,17 +8,27 @@ import Styles from '../styleSheet';
 import * as actions from '../actions/index';
 
 
- class Practice extends Component {
+class Practice extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedIndex: 1, questions:[0,1,2], questionIndex:0,buttons:['Das', 'Die', 'Der'],errors:''};
-
-
+        const questionId = Math.floor((Math.random() * this.props.wordsCount));
+        this.state = {
+            selectedIndex: 1,
+            questionsCount: 9,
+            questionIndex: questionId,
+            buttons: ['Das', 'Die', 'Der'],
+            errors: ''
+        };
     }
 
-    componentWillMount(){
+    componentDidMount() {
         this.props.GetWordDetails(this.state.questionIndex);
+    }
 
+    componentDidUpdate() {
+        const questionI = this.state.questionIndex;
+        if (this.props.GetWordDetails.id !== questionI)
+            this.props.GetWordDetails(questionI);
     }
 
     updateIndex(selectedIndex) {
@@ -27,9 +37,14 @@ import * as actions from '../actions/index';
 
     onPress() {
 
-        if (this.props.questionDetails.gender === this.state.buttons[this.state.selectedIndex]){
-            this.setState({errors:'Work'});
-        };
+        if (this.props.questionDetails.gender === this.state.buttons[this.state.selectedIndex]) {
+            let newQuestionId = Math.floor((Math.random() * this.props.wordsCount));
+            this.setState({questionIndex: newQuestionId, errors: ''});
+        }
+        else {
+            this.setState({errors: 'Try again :)'});
+        }
+
 
     }
 
@@ -39,14 +54,14 @@ import * as actions from '../actions/index';
 
 
         return (
-            <View  style={Styles.container}>
+            <View style={Styles.container}>
                 <Text style={style.h1}>{questionD.german}</Text>
                 <Text style={style.h2}>{questionD.english}</Text>
 
                 <ButtonGroup
                     onPress={this.updateIndex.bind(this)}
                     selectedIndex={selectedIndex}
-                    buttons={ this.state.buttons}
+                    buttons={this.state.buttons}
                 />
 
                 <Button
@@ -62,11 +77,12 @@ import * as actions from '../actions/index';
 
     }
 }
-const mapStateToProps= state =>{
-     return{questionDetails: state.questionDetails};
+
+const mapStateToProps = state => {
+    return {questionDetails: state.questionDetails, wordsCount: state.wordsCount};
 
 };
-export default connect(mapStateToProps,actions)(Practice);
+export default connect(mapStateToProps, actions)(Practice);
 const style = {
 
     h2: {fontSize: 15},
