@@ -30,11 +30,12 @@ class Practice extends Component {
     }
 
     onPress() {
-
-        if (this.props.questionDetails.gender === this.state.buttons[this.state.selectedIndex]) {
+        //The user answered correctly
+        if (this.state.questions[this.state.questionIndex].gender === this.state.buttons[this.state.selectedIndex]) {
             let newQuestionId = Math.floor((Math.random() * this.state.questionsCount));
             this.setState({questionIndex: newQuestionId, errors: ''});
         }
+        //The user answered incorrectly
         else {
             this.setState({errors: 'Try again :)'});
         }
