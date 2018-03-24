@@ -11,27 +11,19 @@ import * as actions from '../actions/index';
 class Practice extends Component {
     constructor(props) {
         super(props);
-        const questionId = Math.floor((Math.random() * this.props.wordsCount));
+        const questions = this.props.vocabulary;
+        const vocabularyLength = questions.length;
+        const questionId = Math.floor((Math.random() *vocabularyLength ));
         this.state = {
             selectedIndex: 1,
-            questionsCount: 9,
-            questions:this.props.vocabulary,
+            questionsCount: vocabularyLength,
+            questions: questions,
             questionIndex: questionId,
             buttons: ['Das', 'Die', 'Der'],
             errors: ''
         };
     }
-r
-    componentDidMount() {
-        this.setState({questions:this.props.vocabulary,questionsCount:this.props.vocabulary.length});
-        this.props.GetWordDetails(this.state.questionIndex);
-    }
 
-    componentDidUpdate() {
-        const questionI = this.state.questionIndex;
-        if (this.props.GetWordDetails.id !== questionI)
-            this.props.GetWordDetails(questionI);
-    }
 
     updateIndex(selectedIndex) {
         this.setState({selectedIndex})
@@ -40,7 +32,7 @@ r
     onPress() {
 
         if (this.props.questionDetails.gender === this.state.buttons[this.state.selectedIndex]) {
-            let newQuestionId = Math.floor((Math.random() * this.props.wordsCount));
+            let newQuestionId = Math.floor((Math.random() * this.state.questionsCount));
             this.setState({questionIndex: newQuestionId, errors: ''});
         }
         else {
@@ -82,7 +74,7 @@ r
 }
 
 const mapStateToProps = state => {
-    return {questionDetails: state.questionDetails, wordsCount: state.wordsCount,vocabulary:state.vocabulary};
+    return { vocabulary: state.vocabulary};
 
 };
 export default connect(mapStateToProps, actions)(Practice);
