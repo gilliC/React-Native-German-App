@@ -15,13 +15,15 @@ class Practice extends Component {
         this.state = {
             selectedIndex: 1,
             questionsCount: 9,
+            questions:this.props.vocabulary,
             questionIndex: questionId,
             buttons: ['Das', 'Die', 'Der'],
             errors: ''
         };
     }
-
+r
     componentDidMount() {
+        this.setState({questions:this.props.vocabulary,questionsCount:this.props.vocabulary.length});
         this.props.GetWordDetails(this.state.questionIndex);
     }
 
@@ -49,7 +51,7 @@ class Practice extends Component {
     }
 
     render() {
-        const questionD = this.props.questionDetails;
+        const questionD = this.state.questions[this.state.questionIndex];
         const {selectedIndex} = this.state;
 
 
@@ -73,13 +75,14 @@ class Practice extends Component {
                 <FormValidationMessage>{this.state.errors}</FormValidationMessage>
 
             </View>
+
         );
 
     }
 }
 
 const mapStateToProps = state => {
-    return {questionDetails: state.questionDetails, wordsCount: state.wordsCount};
+    return {questionDetails: state.questionDetails, wordsCount: state.wordsCount,vocabulary:state.vocabulary};
 
 };
 export default connect(mapStateToProps, actions)(Practice);
@@ -88,3 +91,25 @@ const style = {
     h2: {fontSize: 15},
     h1: {fontSize: 25},
 };
+
+/**
+ *       <View style={Styles.container}>
+ <Text style={style.h1}>{questionD.german}</Text>
+ <Text style={style.h2}>{questionD.english}</Text>
+
+ <ButtonGroup
+ onPress={this.updateIndex.bind(this)}
+ selectedIndex={selectedIndex}
+ buttons={this.state.buttons}
+ />
+
+ <Button
+ raised
+ backgroundColor='#1D3767'
+ title='Check'
+ onPress={this.onPress.bind(this)}
+ />
+ <FormValidationMessage>{this.state.errors}</FormValidationMessage>
+
+ </View>
+ **/
