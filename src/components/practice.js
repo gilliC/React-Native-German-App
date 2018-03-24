@@ -31,11 +31,16 @@ class Practice extends Component {
 
     onPress() {
         //The user answered correctly
-        if (this.state.questions[this.state.questionIndex].gender === this.state.buttons[this.state.selectedIndex]) {
-            let newQuestionId = Math.floor((Math.random() * this.state.questionsCount));
-            this.setState({questionIndex: newQuestionId, errors: ''});
+        const state = this.state;
+        const questionIndex = state.questionIndex;
+        if (state.questions[questionIndex].gender === state.buttons[state.selectedIndex]) {
+            let newQuestions  = state.questions;
+            newQuestions.splice(questionIndex,1);
+            let newQuestionId = Math.floor((Math.random() * newQuestions.length));
+            this.setState({questions:newQuestions,questionIndex: newQuestionId, errors: ''});
         }
         //The user answered incorrectly
+
         else {
             this.setState({errors: 'Try again :)'});
         }
@@ -47,7 +52,7 @@ class Practice extends Component {
         const questionD = this.state.questions[this.state.questionIndex];
         const {selectedIndex} = this.state;
 
-
+        if (questionD!==undefined){
         return (
             <View style={Styles.container}>
                 <Text style={style.h1}>{questionD.german}</Text>
@@ -68,8 +73,14 @@ class Practice extends Component {
                 <FormValidationMessage>{this.state.errors}</FormValidationMessage>
 
             </View>
-
-        );
+        );}
+        else {return(
+            <View>
+                <Text>
+                    You have finished your practice!
+                </Text>
+            </View>
+        );}
 
     }
 }
@@ -86,7 +97,7 @@ const style = {
 };
 
 /**
- *       <View style={Styles.container}>
+ *      <View style={Styles.container}>
  <Text style={style.h1}>{questionD.german}</Text>
  <Text style={style.h2}>{questionD.english}</Text>
 
