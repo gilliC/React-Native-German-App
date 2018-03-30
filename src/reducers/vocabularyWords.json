@@ -12,9 +12,99 @@
     "gender": "Das"
   },
   {
+    "id": 2,
+    "german": "Katze",
+    "english": "Cat",
+    "gender": "Die"
+  },
+  {
+    "id": 3,
+    "german": "Jahr",
+    "english": "Year",
+    "gender": "Das"
+  },
+  {
+    "id": 4,
+    "german": "Zeit",
+    "english": "Time",
+    "gender": "Die"
+  },
+  {
+    "id": 5,
+    "german": "Beispiel",
+    "english": "Example",
+    "gender": "Das"
+  },
+  {
+    "id": 6,
+    "german": "Mensch",
+    "english": "Human being",
+    "gender": "Der"
+  },
+  {
+    "id": 7,
+    "german": "Tag",
+    "english": "Day",
+    "gender": "Der"
+  },
+  {
+    "id": 8,
+    "german": "Land",
+    "english": "Country",
+    "gender": "Das"
+  },
+  {
+    "id": 9,
+    "german": "Frage",
+    "english": "Question",
+    "gender": "Die"
+  },
+  {
+    "id": 10,
+    "german": "Haus",
+    "english": "House",
+    "gender": "Das"
+  },
+  {
+    "id": 11,
+    "german": "Leute",
+    "english": "People",
+    "gender": "Die"
+  },
+  {
+    "id": 12,
+    "german": "Arbeit",
+    "english": "Work",
+    "gender": "Die"
+  },
+  {
+    "id": 13,
+    "german": "Stadt",
+    "english": "City",
+    "gender": "Die"
+  },
+  {
     "id": 14,
     "german": "Welt",
     "english": "World",
+    "gender": "Die"
+  },
+  {
+    "id": 15,
+    "german": "Schule",
+    "english": "School",
+    "gender": "Die"
+  },
+  {
+    "id": 16,
+    "german": "Ende",
+    "english": "End",
+    "gender": "Das"
+  },
+  {
+    "id": 17,
+    "german": "Woche",
+    "english": "Week",
     "gender": "Die"
   }
 ]

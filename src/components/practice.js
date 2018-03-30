@@ -53,27 +53,27 @@ class Practice extends Component {
         const {selectedIndex} = this.state;
 
         if (questionD!==undefined){
-        return (
-            <View style={Styles.container}>
-                <Text style={style.h1}>{questionD.german}</Text>
-                <Text style={style.h2}>{questionD.english}</Text>
+            return (
+                <View style={Styles.container}>
+                    <Text style={style.h1}>{questionD.german}</Text>
+                    <Text style={style.h2}>{questionD.english}</Text>
 
-                <ButtonGroup
-                    onPress={this.updateIndex.bind(this)}
-                    selectedIndex={selectedIndex}
-                    buttons={this.state.buttons}
-                />
+                    <ButtonGroup
+                        onPress={this.updateIndex.bind(this)}
+                        selectedIndex={selectedIndex}
+                        buttons={this.state.buttons}
+                    />
 
-                <Button
-                    raised
-                    backgroundColor='#1D3767'
-                    title='Check'
-                    onPress={this.onPress.bind(this)}
-                />
-                <FormValidationMessage>{this.state.errors}</FormValidationMessage>
+                    <Button
+                        raised
+                        backgroundColor='#1D3767'
+                        title='Check'
+                        onPress={this.onPress.bind(this)}
+                    />
+                    <FormValidationMessage>{this.state.errors}</FormValidationMessage>
 
-            </View>
-        );}
+                </View>
+            );}
         else {return(
             <View>
                 <Text>
@@ -96,24 +96,3 @@ const style = {
     h1: {fontSize: 25},
 };
 
-/**
- *      <View style={Styles.container}>
- <Text style={style.h1}>{questionD.german}</Text>
- <Text style={style.h2}>{questionD.english}</Text>
-
- <ButtonGroup
- onPress={this.updateIndex.bind(this)}
- selectedIndex={selectedIndex}
- buttons={this.state.buttons}
- />
-
- <Button
- raised
- backgroundColor='#1D3767'
- title='Check'
- onPress={this.onPress.bind(this)}
- />
- <FormValidationMessage>{this.state.errors}</FormValidationMessage>
-
- </View>
- **/
