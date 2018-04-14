@@ -17,7 +17,6 @@ export default function (state = initialState, action) {
             };
 
         case FETCH_SUCCESS:
-            console.log("FETCHSUCCESS/datareducer:");
             console.log(action);
             return {
                 ...state,

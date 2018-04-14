@@ -29,7 +29,7 @@ export default class MainPage extends Component {
                     <TouchableOpacity style={Styles.btn}>
                         <Text onPress={this.onPressPractice.bind(this)} style={Styles.btnTxt}>Practice</Text>
                     </TouchableOpacity>
-                    <Text>32</Text>
+                    <Text>35</Text>
                 </View>
             </View>
 

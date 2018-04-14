@@ -35,9 +35,6 @@ class VocabularyList extends Component {
 
         let viewlist = <Text style={style.h1}>Loading ..</Text>;
         const {error, loading, items} = this.props;
-        console.log("props:");
-        console.log(loading);
-        console.log(error);
 
         if (error) {
             viewlist = <Text style={style.h1}>Error! {error.message}</Text>;
@@ -69,7 +66,6 @@ class VocabularyList extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log("state:");
     console.log(state);
 
     return {

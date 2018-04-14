@@ -1,18 +1,5 @@
 import React from 'react';
 
-export const GetWordDetails = (wordId) => {
-    return {
-        type: 'get_word_details',
-        payload: wordId
-    };
-};
-export const GetVocabulary = () => {
-    return {
-        type: 'get_vocabulary',
-        payload: ''
-    };
-};
-
 export const wordCreate = ({germanWord, englishTrans, gender}) => {
     return null;
     //I will get back to it later
@@ -38,8 +25,6 @@ export const fetchFailure = error => ({
 
 //Handle HTTP errors, since fetch doesn't
 function handleErrors(response) {
-    console.log("HandleErrors/actions response.ok:" +response.ok);
-
     if (!response.ok) {
         console.log("Error " + response.statusText);
 
@@ -49,14 +34,12 @@ function handleErrors(response) {
 }
 
 export function fetchData() {
-    console.log("fetchdata");
     return dispatch => {
         dispatch(fetchBegin());
 
          fetch('http://35.205.148.41:1617/')
             .then(handleErrors)
             .then(res => {
-                console.log(res);
                 return res.json();
             })
             .then(data => {

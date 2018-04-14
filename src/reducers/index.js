@@ -1,11 +1,9 @@
 import {combineReducers} from 'redux';
-import VocabluaryReducer from './vocabulary_reducer';
 import DataReducer from './data_reducer';
 
 
 
 export default combineReducers({
-    vocabulary: VocabluaryReducer,
     data:DataReducer
 });
 
