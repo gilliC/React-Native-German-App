@@ -1,4 +1,4 @@
-import {FETCH_BEGIN, FETCH_FAILURE, FETCH_SUCCESS} from '../actions/index';
+import {FETCH_BEGIN, FETCH_FAILURE, FETCH_SUCCESS} from '../constants';
 
 const initialState = {
     items: [],

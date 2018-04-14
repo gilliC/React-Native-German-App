@@ -34,20 +34,19 @@ class AddAWord extends Component {
 
         return (
             <View>
-                <View style={Styles.mainContainer}>
-                    <Text style={style.h1}>Add a word</Text>
+                <Text style={[style.h1,Styles.centerTxt]}>Add A Word</Text>
+                <View style={Styles.vocabularyContainer}>
                     <FormLabel>German Word</FormLabel>
                     <FormInput onChangeText={(text) => this.setState({germanWord: text})}/>
 
                     <FormLabel>English Translation</FormLabel>
                     <FormInput onChangeText={(text) => this.setState({englishTrans: text})}/>
 
-
                     <ButtonGroup
                         onPress={this.updateIndex}
                         selectedIndex={selectedIndex}
                         buttons={buttons}/>
-
+                </View>
                     <Button
                         raised
                         icon={{name: 'add'}}
@@ -56,8 +55,6 @@ class AddAWord extends Component {
                         onPress={this.onSendingForm}
                     />
                     <FormValidationMessage>{errors}</FormValidationMessage>
-
-                </View>
             </View>
         );
     }

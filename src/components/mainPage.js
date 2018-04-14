@@ -25,11 +25,11 @@ export default class MainPage extends Component {
                     <TouchableOpacity onPress={this.onPressVocabulary.bind(this)} style={Styles.btn}>
                         <Text style={Styles.btnTxt}>Vocabulary</Text>
                     </TouchableOpacity>
-                    <Text style={style.h1}>Hello User!</Text>
+                    <Text style={[style.h1,Styles.centerTxt]}>Hello User!</Text>
                     <TouchableOpacity style={Styles.btn}>
                         <Text onPress={this.onPressPractice.bind(this)} style={Styles.btnTxt}>Practice</Text>
                     </TouchableOpacity>
-                    <Text>35</Text>
+                    <Text>37</Text>
                 </View>
             </View>
 

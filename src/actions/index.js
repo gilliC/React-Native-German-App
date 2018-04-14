@@ -1,13 +1,13 @@
 import React from 'react';
+import {FETCH_BEGIN, FETCH_FAILURE, FETCH_SUCCESS} from '../constants';
+
 
 export const wordCreate = ({germanWord, englishTrans, gender}) => {
     return null;
     //I will get back to it later
 };
 
-export const FETCH_BEGIN = 'FETCH_BEGIN';
-export const FETCH_SUCCESS = 'FETCH_SUCCESS';
-export const FETCH_FAILURE = 'FETCH_FAILURE';
+
 
 export const fetchBegin = () => ({
     type: FETCH_BEGIN

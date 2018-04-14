@@ -24,7 +24,8 @@ class SingleWordItem extends Component {
         switch (gender) {
             case "Der":
                 genderStyle = {
-                    borderColor: '#58A4B0'
+                    borderColor: '#58A4B0',
+
                 };
                 break;
             case "Das":
