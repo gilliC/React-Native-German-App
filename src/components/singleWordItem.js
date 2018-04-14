@@ -4,6 +4,9 @@ import {Divider} from 'react-native-elements';
 
 import Styles from '../styleSheet';
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 class SingleWordItem extends Component {
     constructor(props) {
@@ -11,23 +14,28 @@ class SingleWordItem extends Component {
     }
 
     render() {
-        const gender = this.props.word.gender;
+        let gender = this.props.word.fields.gender;
+        gender = capitalizeFirstLetter(gender);
+        const german = this.props.word.fields.german_word;
+        const english = this.props.word.fields.english_translation;
+
+
         let genderStyle;
         switch (gender) {
             case "Der":
                 genderStyle = {
-                    backgroundColor: '#58A4B0'
+                    borderColor: '#58A4B0'
                 };
                 break;
             case "Das":
                 genderStyle = {
-                    backgroundColor: '#1E6446'
+                    borderColor: '#1E6446'
                 };
                 break;
 
             case "Die":
                 genderStyle = {
-                    backgroundColor: '#734B5E'
+                    borderColor: '#734B5E'
                 };
                 break;
 
@@ -35,9 +43,9 @@ class SingleWordItem extends Component {
 
 
         return (
-            <View style={[Styles.itemContainer, genderStyle]}>
-                <Text style={style.h1}> {gender} {this.props.word.german} </Text>
-                <Text style={style.h2}>{this.props.word.english} </Text>
+            <View style={[Styles.wordContainer, genderStyle]}>
+                <Text style={style.h1}> {gender} {german} </Text>
+                <Text style={style.h2}>{english} </Text>
 
             </View>
 
@@ -53,11 +61,9 @@ export default SingleWordItem;
 const style = {
     h1: {
         fontSize: 25,
-        color: 'white'
     },
     h2: {
         fontSize: 15,
-        color: 'white',
         paddingLeft:10
     }
 };

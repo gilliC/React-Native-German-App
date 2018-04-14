@@ -23,7 +23,7 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.mainContainer}>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
@@ -39,7 +39,7 @@ export default class App extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

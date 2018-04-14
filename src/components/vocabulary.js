@@ -19,8 +19,8 @@ export default class Vocabulary extends Component {
     render() {
         return (
             <View>
-                <View style={Styles.container}>
-                    <Text style={style.h1}>Vocabulary</Text>
+                <Text style={[style.h1]}>Vocabulary</Text>
+                <View style={Styles.vocabularyContainer}>
                     <TouchableOpacity style={Styles.btn} onPress={this.onPress.bind(this)}>
                         <Text style={Styles.btnTxt}>Add a word</Text>
                     </TouchableOpacity>
@@ -35,6 +35,6 @@ const style = {
     h1: {
         fontSize: 20,
         padding: 10,
-        alignItems: 'center'
+        textAlign:'center'
     }
 };

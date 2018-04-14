@@ -5,26 +5,39 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: '#F2F4F3'
+        backgroundColor: '#F2F4F3',
+
 
     },
-    container: {
+    mainContainer: {
         backgroundColor: '#F2F4F3',
-        justifyContent:'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
+    },
+    vocabularyContainer: {
         alignItems: 'center'
+    },
+    insideView: {
+        flex: 1
     },
     btn: {
         backgroundColor: '#1D3767',
-        borderRadius: 10,
+        borderRadius: 30,
         borderStyle: 'solid',
-        paddingVertical:10,
-        paddingHorizontal:20,
+        justifyContent: 'center',
+        width: 300,
+        height: 50
+
+
     },
     btnTxt: {
         color: 'white',
-        fontSize:20,
-        alignItems : 'center',
-
+        fontSize: 15,
+        textAlign: 'center',
+    },
+    centerTxt: {
+        textAlign: 'center'
     },
     txtInput: {
         padding: 10,
@@ -34,16 +47,18 @@ const styles = StyleSheet.create({
         width: 200
 
     },
-    itemContainer: {
+    wordContainer: {
         flexDirection: 'row',
         alignItems: 'flex-end',
         justifyContent: 'center',
-        borderRadius: 30,
-        marginTop:10,
-        paddingHorizontal:80,
-        paddingVertical:10,
-        marginLeft:10,
-        marginRight:10
+        borderRadius: 10,
+        borderWidth:2,
+
+        marginTop: 10,
+        paddingHorizontal: 80,
+        paddingVertical: 10,
+        marginLeft: 10,
+        marginRight: 10
 
     },
 

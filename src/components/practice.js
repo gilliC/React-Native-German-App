@@ -54,7 +54,7 @@ class Practice extends Component {
 
         if (questionD!==undefined){
             return (
-                <View style={Styles.container}>
+                <View style={Styles.mainContainer}>
                     <Text style={style.h1}>{questionD.german}</Text>
                     <Text style={style.h2}>{questionD.english}</Text>
 

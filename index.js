@@ -2,7 +2,6 @@ import React from 'react';
 import {View, AppRegistry} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
 
 import MainPage from './src/components/mainPage';
 import Vocabulary from './src/components/vocabulary';
@@ -10,7 +9,7 @@ import Practice from './src/components/practice';
 import AddAWord from './src/components/addAWord';
 
 import Styles from './src/styleSheet';
-import reducers from './src/reducers/index';
+import store from './configureStore';
 
 const RootStack = StackNavigator({
         Home: {screen: MainPage,},
@@ -23,9 +22,10 @@ const RootStack = StackNavigator({
         initialRouteName: 'Home',
     }
 );
+
 const App = () => {
     return (
-        <Provider store={createStore(reducers)}>
+        <Provider store={store()}>
             <View style={Styles.body}>
                 <RootStack/>
             </View>

@@ -1,19 +1,25 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {Text, View, TouchableOpacity, TextInput} from 'react-native';
 import {ButtonGroup, Icon, Button, FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
 
+import {wordCreate} from '../actions/index';
 
 import Styles from '../styleSheet';
 
-export default class AddAWord extends Component {
+class AddAWord extends Component {
 
     constructor(props) {
         super(props);
         this.state = {germanWord: "", englishTrans: "", gender: "", selectedIndex: 0}
+        this.onSendingForm = this.onSendingForm.bind(this);
+        this.updateIndex = this.updateIndex.bind(this);
 
     }
 
-    onPress() {
+    onSendingForm() {
+        const {germanWord, englishTrans, gender} = this.state;
+        this.props.wordCreate({germanWord, englishTrans, gender});
 
     }
 
@@ -28,7 +34,7 @@ export default class AddAWord extends Component {
 
         return (
             <View>
-                <View style={Styles.container}>
+                <View style={Styles.mainContainer}>
                     <Text style={style.h1}>Add a word</Text>
                     <FormLabel>German Word</FormLabel>
                     <FormInput onChangeText={(text) => this.setState({germanWord: text})}/>
@@ -38,7 +44,7 @@ export default class AddAWord extends Component {
 
 
                     <ButtonGroup
-                        onPress={this.updateIndex.bind(this)}
+                        onPress={this.updateIndex}
                         selectedIndex={selectedIndex}
                         buttons={buttons}/>
 
@@ -47,7 +53,7 @@ export default class AddAWord extends Component {
                         icon={{name: 'add'}}
                         backgroundColor='#1D3767'
                         title='Add'
-                        onPress={this.onPress.bind(this)}
+                        onPress={this.onSendingForm}
                     />
                     <FormValidationMessage>{errors}</FormValidationMessage>
 
@@ -56,22 +62,11 @@ export default class AddAWord extends Component {
         );
     }
 }
-
-/**
- *                     <Icon
- reverse
- name='plus'
- type='font-awesome'
- color='#1D3767'
- />
- *
- * @type {{h1: {fontSize: number, padding: number}}}
- */
-
+export default connect(null,{wordCreate})(AddAWord);
 
 const style = {
     h1: {
         fontSize: 20,
         padding: 10
     }
-}
+};

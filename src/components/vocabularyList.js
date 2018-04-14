@@ -1,22 +1,21 @@
 import React, {Component} from 'react';
-import {View, Text, ListView} from 'react-native';
+import {Text, View, ListView} from 'react-native';
+
 import {connect} from 'react-redux';
-import * as actions from '../actions/index';
 
-
+import {fetchData} from '../actions/index';
 import SingleWordItem from './singleWordItem';
+import Styles from '../styleSheet';
+
 
 class VocabularyList extends Component {
     constructor(props) {
         super(props);
+        this.state = {isPressed: false}
     }
 
-    componentWillMount() {
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
-
-        this.dataSource = ds.cloneWithRows(this.props.vocabulary);
+    componentDidMount() {
+        this.props.fetchData();
     }
 
     renderRow(word) {
@@ -24,16 +23,45 @@ class VocabularyList extends Component {
             <SingleWordItem word={word}/>
 
         );
+    }
+
+    onPress() {
+        this.props.navigation.navigate('AddAWord');
 
     }
 
+
     render() {
+
+        let viewlist = <Text style={style.h1}>Loading ..</Text>;
+        const {error, loading, items} = this.props;
+        console.log("props:");
+        console.log(loading);
+        console.log(error);
+
+        if (error) {
+            viewlist = <Text style={style.h1}>Error! {error.message}</Text>;
+        }
+        if (loading) {
+            console.log("loading...");
+            viewlist = <Text style={style.h1}>Loading ..</Text>;
+        }
+        if (items) {
+            const ds = new ListView.DataSource({
+                rowHasChanged: (r1, r2) => r1 !== r2
+            });
+            this.dataSource = ds.cloneWithRows(this.props.items);
+            console.log(this.dataSource);
+            viewlist = <ListView
+                dataSource={this.dataSource}
+                renderRow={this.renderRow}
+            />
+        }
+        if (viewlist === undefined)
+            viewlist = <Text style={style.h1}>an unknown error</Text>;
         return (
             <View>
-                <ListView
-                    dataSource={this.dataSource}
-                    renderRow={this.renderRow}
-                />
+                {viewlist}
             </View>
 
         );
@@ -41,10 +69,24 @@ class VocabularyList extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log("state:");
     console.log(state);
-    return {vocabulary: state.vocabulary};
+
+    return {
+        items: state.data.items,
+        loading: state.data.loading,
+        error: state.data.error
+    };
     //return the data in state (reducer). vocabulary as a prop under the key vocabulary
 
 };
 
-export default connect(mapStateToProps,actions)(VocabularyList);
+export default connect(mapStateToProps, {fetchData})(VocabularyList);
+
+const style = {
+    h1: {
+        fontSize: 20,
+        padding: 10,
+        alignItems: 'center'
+    }
+};
