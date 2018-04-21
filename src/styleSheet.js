@@ -18,6 +18,11 @@ const styles = StyleSheet.create({
     vocabularyContainer: {
         alignItems: 'center'
     },
+    practiceContainer:{
+        backgroundColor: '#F2F4F3',
+        justifyContent: 'center',
+        flex: 1
+    },
     insideView: {
         flex: 1
     },

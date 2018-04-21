@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import {Divider} from 'react-native-elements';
 
 import Styles from '../styleSheet';
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+import {capitalizeFirstLetter} from '../constants';
 
 class SingleWordItem extends Component {
     constructor(props) {

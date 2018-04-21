@@ -15,7 +15,10 @@ class VocabularyList extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchData();
+        if (this.props.items.length === 0) {
+            console.log("vocabulary fetchData()");
+            this.props.fetchData();
+        }
     }
 
     renderRow(word) {
