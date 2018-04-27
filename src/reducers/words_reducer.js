@@ -1,4 +1,4 @@
-import {FETCH_ANSWER_BEGIN, FETCH_ANSWER_FAILURE, FETCH_ANSWER_SUCCESS} from '../constants';
+import {FETCH_ANSWER_BEGIN, FETCH_ANSWER_FAILURE, FETCH_ANSWER_SUCCESS,CLEAR_ANSWER} from '../constants';
 
 const initialState = {
     answer: null,
@@ -30,6 +30,13 @@ export default function (state = initialState, action) {
                 error: action.payload.error,
                 answer:null
             };
+        case CLEAR_ANSWER:
+            return{
+                ...state,
+                loading:false,
+                error:null,
+                answer:null
+            }
 
         default:
             return state;

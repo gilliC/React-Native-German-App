@@ -4,6 +4,7 @@ export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
 export const FETCH_ANSWER_BEGIN = 'FETCH_ANSWER_BEGIN';
 export const FETCH_ANSWER_SUCCESS = 'FETCH_ANSWER_SUCCESS';
 export const FETCH_ANSWER_FAILURE = 'FETCH_ANSWER_FAILURE';
+export const CLEAR_ANSWER = 'CLEAR_ANSWER';
 export function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

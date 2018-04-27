@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    FETCH_ANSWER_BEGIN, FETCH_ANSWER_FAILURE, FETCH_ANSWER_SUCCESS,
+    FETCH_ANSWER_BEGIN, FETCH_ANSWER_FAILURE, FETCH_ANSWER_SUCCESS,CLEAR_ANSWER,
     handleErrors
 } from '../constants';
 export const fetchAnswerBegin = () => ({
@@ -14,7 +14,9 @@ export const fetchAnswerFailure = error => ({
     type: FETCH_ANSWER_FAILURE,
     payload: {error: error}
 });
-
+export const clearAnswer = () =>({
+    type: CLEAR_ANSWER
+});
 
 export function insertWord(germanWord, englishTrans, gender) {
     return dispatch => {
