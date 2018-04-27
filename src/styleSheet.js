@@ -16,12 +16,17 @@ const styles = StyleSheet.create({
         flex: 1
     },
     vocabularyContainer: {
-        alignItems: 'center'
+        alignItems: 'center',
+
     },
     practiceContainer:{
         backgroundColor: '#F2F4F3',
         justifyContent: 'center',
         flex: 1
+    },
+    listContainer:{
+        marginTop:20,
+        height:400
     },
     insideView: {
         flex: 1
@@ -32,7 +37,8 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         justifyContent: 'center',
         width: 300,
-        height: 50
+        height: 50,
+        marginTop:10
 
 
     },
@@ -53,8 +59,6 @@ const styles = StyleSheet.create({
 
     },
     wordContainer: {
-        flexDirection: 'row',
-        alignItems: 'flex-end',
         justifyContent: 'center',
         borderRadius: 10,
         borderWidth:2,

@@ -1,57 +1,41 @@
 import React from 'react';
-import {FETCH_BEGIN, FETCH_FAILURE, FETCH_SUCCESS} from '../constants';
 
+import {
+    FETCH_DATA_BEGIN, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS,
+    handleErrors
+} from '../constants';
 
-export const wordCreate = ({germanWord, englishTrans, gender}) => {
-    return null;
-    //I will get back to it later
-};
-
-
-
-export const fetchBegin = () => ({
-    type: FETCH_BEGIN
+export const fetchDataBegin = () => ({
+    type: FETCH_DATA_BEGIN
 });
-
-export const fetchSuccess = data => ({
-    type: FETCH_SUCCESS,
+export const fetchDataSuccess = data => ({
+    type: FETCH_DATA_SUCCESS,
     payload: {data}
 });
-
-export const fetchFailure = error => ({
-    type: FETCH_FAILURE,
-    payload: {error}
+export const fetchDataFailure = error => ({
+    type: FETCH_DATA_FAILURE,
+    payload: {error: error}
 });
 
-//Handle HTTP errors, since fetch doesn't
-function handleErrors(response) {
-    if (!response.ok) {
-        console.log("Error " + response.statusText);
 
-        throw Error(response.statusText);
-    }
-    return response;
-}
 
 export function fetchData() {
     return dispatch => {
-        dispatch(fetchBegin());
+        dispatch(fetchDataBegin());
 
-         fetch('http://35.205.148.41:1617/')
+        fetch('http://35.205.148.41:1617/')
             .then(handleErrors)
             .then(res => {
                 return res.json();
             })
             .then(data => {
                 console.log(data);
-                dispatch(fetchSuccess(data));
+                dispatch(fetchDataSuccess(data));
                 return data;
             })
             .catch(error => {
-                dispatch(fetchFailure(error))});
+                dispatch(fetchDataFailure(error))
+            });
     };
 
-};
-
-
-//WORKING ALL
+}

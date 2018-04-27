@@ -16,7 +16,6 @@ class VocabularyList extends Component {
 
     componentDidMount() {
         if (this.props.items.length === 0) {
-            console.log("vocabulary fetchData()");
             this.props.fetchData();
         }
     }
@@ -51,7 +50,6 @@ class VocabularyList extends Component {
                 rowHasChanged: (r1, r2) => r1 !== r2
             });
             this.dataSource = ds.cloneWithRows(this.props.items);
-            console.log(this.dataSource);
             viewlist = <ListView
                 dataSource={this.dataSource}
                 renderRow={this.renderRow}
@@ -60,7 +58,7 @@ class VocabularyList extends Component {
         if (viewlist === undefined)
             viewlist = <Text style={style.h1}>an unknown error</Text>;
         return (
-            <View>
+            <View style={Styles.listContainer}>
                 {viewlist}
             </View>
 
@@ -69,7 +67,7 @@ class VocabularyList extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
+    console.log(state.data);
 
     return {
         items: state.data.items,

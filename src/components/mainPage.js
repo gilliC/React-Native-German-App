@@ -3,10 +3,12 @@ import {Text, View, TouchableOpacity} from 'react-native';
 
 import Styles from '../styleSheet';
 
-
 export default class MainPage extends Component {
     constructor(props) {
         super(props);
+        this.onPressVocabulary=this.onPressVocabulary.bind(this);
+        this.onPressPractice=this.onPressPractice.bind(this);
+
     }
 
     onPressVocabulary() {
@@ -18,18 +20,18 @@ export default class MainPage extends Component {
 
     }
 
+
     render() {
         return (
             <View style={Styles.mainContainer}>
                 <View>
-                    <TouchableOpacity onPress={this.onPressVocabulary.bind(this)} style={Styles.btn}>
+                    <TouchableOpacity onPress={this.onPressVocabulary} style={Styles.btn}>
                         <Text style={Styles.btnTxt}>Vocabulary</Text>
                     </TouchableOpacity>
-                    <Text style={[style.h1,Styles.centerTxt]}>Hello User!</Text>
+                    <Text style={[style.h1,Styles.centerTxt]}>Hello User!4</Text>
                     <TouchableOpacity style={Styles.btn}>
-                        <Text onPress={this.onPressPractice.bind(this)} style={Styles.btnTxt}>Practice</Text>
+                        <Text onPress={this.onPressPractice} style={Styles.btnTxt}>Practice</Text>
                     </TouchableOpacity>
-                    <Text>30</Text>
                 </View>
             </View>
 

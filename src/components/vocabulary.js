@@ -19,22 +19,16 @@ export default class Vocabulary extends Component {
     render() {
         return (
             <View>
-                <Text style={[style.h1]}>Vocabulary</Text>
-                <View style={Styles.vocabularyContainer}>
-                    <TouchableOpacity style={Styles.btn} onPress={this.onPress.bind(this)}>
-                        <Text style={Styles.btnTxt}>Add a word</Text>
-                    </TouchableOpacity>
+
+                    <View style={Styles.vocabularyContainer}>
+                        <TouchableOpacity style={Styles.btn} onPress={this.onPress.bind(this)}>
+                            <Text style={Styles.btnTxt}>Add a word</Text>
+                        </TouchableOpacity>
+                    </View>
                     <VocabularyList/>
-                </View>
+
             </View>
         );
     }
 
 }
-const style = {
-    h1: {
-        fontSize: 20,
-        padding: 10,
-        textAlign:'center'
-    }
-};

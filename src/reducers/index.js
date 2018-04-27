@@ -1,11 +1,14 @@
 import {combineReducers} from 'redux';
 import DataReducer from './data_reducer';
+import WordsReducer from './words_reducer';
+
 
 
 
 export default combineReducers({
-    data:DataReducer
+    data:DataReducer,
+    answer:WordsReducer
 });
 
-// vocabulary : the name of the variable
-// VocabularyReducer: the value, which the reducer gives.
+// data : the name of the variable
+// DataReducer: the value, which the reducer gives.

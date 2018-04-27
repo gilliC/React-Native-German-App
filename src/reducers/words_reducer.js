@@ -1,7 +1,7 @@
-import {FETCH_DATA_BEGIN, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS} from '../constants';
+import {FETCH_ANSWER_BEGIN, FETCH_ANSWER_FAILURE, FETCH_ANSWER_SUCCESS} from '../constants';
 
 const initialState = {
-    items: [],
+    answer: null,
     loading: false,
     error: null
 };
@@ -9,26 +9,26 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
 
-        case FETCH_DATA_BEGIN:
+        case FETCH_ANSWER_BEGIN:
             return {
                 ...state,
                 loading: true,
                 error: null
             };
 
-        case FETCH_DATA_SUCCESS:
+        case FETCH_ANSWER_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                items: action.payload.data
+                answer: action.payload.answer
             };
 
-        case FETCH_DATA_FAILURE:
+        case FETCH_ANSWER_FAILURE:
             return {
                 ...state,
                 loading: false,
                 error: action.payload.error,
-                items: []
+                answer:null
             };
 
         default:

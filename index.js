@@ -8,6 +8,7 @@ import Vocabulary from './src/components/vocabulary';
 import Practice from './src/components/practice';
 import AddAWord from './src/components/addAWord';
 
+
 import Styles from './src/styleSheet';
 import store from './configureStore';
 
@@ -16,6 +17,7 @@ const RootStack = StackNavigator({
         Vocabulary: {screen: Vocabulary,},
         AddAWord: {screen: AddAWord,},
         Practice: {screen: Practice,},
+
 
     },
     {
