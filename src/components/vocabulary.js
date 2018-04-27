@@ -19,7 +19,6 @@ export default class Vocabulary extends Component {
     render() {
         return (
             <View>
-
                     <View style={Styles.vocabularyContainer}>
                         <TouchableOpacity style={Styles.btn} onPress={this.onPress.bind(this)}>
                             <Text style={Styles.btnTxt}>Add a word</Text>

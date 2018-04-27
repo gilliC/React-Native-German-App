@@ -126,7 +126,7 @@ class Practice extends Component {
             if (startedPracticing)
                 return (
                     <View>
-                        <Text>
+                        <Text style={[style.h1,Styles.centerTxt]}>
                             You have finished your practice!
                         </Text>
                     </View>
@@ -136,15 +136,17 @@ class Practice extends Component {
                 if (loading) {
                     return (
                         <View>
-                            <Text style={style.h1}>Loading ..</Text>
+                            <Text style={[style.h1,Styles.centerTxt]}>
+                                Loading ..
+                            </Text>
                         </View>
                     );
                 }
                 else {
                     return (
                         <View>
-                            <Text>
-                               There is a problem
+                            <Text style={[style.h1,Styles.centerTxt]}>
+                              Wait ..
                             </Text>
                         </View>
                     );
@@ -156,6 +158,7 @@ class Practice extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
         items: state.data.items,
         loading: state.data.loading,

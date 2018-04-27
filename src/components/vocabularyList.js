@@ -35,7 +35,7 @@ class VocabularyList extends Component {
 
     render() {
 
-        let viewlist = <Text style={style.h1}>Loading ..</Text>;
+        let viewlist = <Text style={style.h1}>Wait ..</Text>;
         const {error, loading, items} = this.props;
 
         if (error) {
@@ -45,7 +45,7 @@ class VocabularyList extends Component {
             console.log("loading...");
             viewlist = <Text style={style.h1}>Loading ..</Text>;
         }
-        if (items) {
+        if (items.length >0) {
             const ds = new ListView.DataSource({
                 rowHasChanged: (r1, r2) => r1 !== r2
             });
