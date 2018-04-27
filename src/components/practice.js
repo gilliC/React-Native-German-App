@@ -4,7 +4,7 @@ import {ButtonGroup, Icon, Button, FormLabel, FormInput, FormValidationMessage} 
 import {connect} from 'react-redux';
 
 import Styles from '../styleSheet';
-import * as actions from '../actions/index';
+import * as actions from '../actions/vocabularyActions';
 import {capitalizeFirstLetter} from '../constants';
 
 class Practice extends Component {
@@ -46,7 +46,7 @@ class Practice extends Component {
         const items = this.props.items;
         const questions = this.state.questions.slice();
         const startedPracticing = this.state.isStartedPracticing;
-        if (!startedPracticing && items !== questions) {
+        if (!startedPracticing && items.length !== questions.length) {
             this.setState({questions: items, questionsCount: items.length, isStartedPracticing: true});
         }
     }

@@ -3,7 +3,7 @@ import {Text, View, ListView} from 'react-native';
 
 import {connect} from 'react-redux';
 
-import {fetchData} from '../actions/index';
+import {fetchData} from '../actions/vocabularyActions';
 import SingleWordItem from './singleWordItem';
 import Styles from '../styleSheet';
 

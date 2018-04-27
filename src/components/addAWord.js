@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import {Text, View} from 'react-native';
 import {ButtonGroup, Button, FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
 import {insertWord, clearAnswer} from '../actions/word_actions';
-import {fetchData} from '../actions/index'
+import {fetchData} from '../actions/vocabularyActions'
 import Styles from '../styleSheet';
 
 class AddAWord extends Component {
@@ -26,8 +26,6 @@ class AddAWord extends Component {
     componentDidUpdate() {
         if (this.props.answer === "Succeed") {
             this.props.clearAnswer();
-            console.log("new answer:");
-            console.log(this.props.answer);
             this.props.fetchData();
         }
         if (this.state.vocabularyCount !== this.props.items.length)
@@ -39,8 +37,6 @@ class AddAWord extends Component {
         const state = this.state;
         const {germanWord, englishTrans} = state;
         const gender = state.buttons[state.selectedIndex];
-        console.log("state:");
-        console.log(state);
         this.props.insertWord(germanWord, englishTrans, gender);
 
     }
