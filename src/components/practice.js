@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
-import {ButtonGroup, Icon, Button, FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
+import {Text, View} from 'react-native';
+import {ButtonGroup, Button, FormValidationMessage} from 'react-native-elements';
 import {connect} from 'react-redux';
 
 import Styles from '../styleSheet';
-import * as actions from '../actions/vocabularyActions';
-import {capitalizeFirstLetter} from '../constants';
+import * as actions from '../actions/vocabulary_actions';
+import {capitalizeFirstLetter,designByGender} from '../constants';
 
 class Practice extends Component {
+    static navigationOptions = {
+        title: 'Practice',
+    };
     constructor(props) {
         super(props);
         let isStartedPracticing = false;
@@ -34,15 +37,21 @@ class Practice extends Component {
         ;
 
         this.onPress=this.onPress.bind(this);
+        this.updateIndex=this.updateIndex.bind(this);
     }
 
     componentDidMount() {
-        if (this.props.items.length === 0) {
+        if (this.props.items.length === 0|| this.props.items.length<this.props.itemsCount) {
             console.log("practice fetchData()");
             this.props.fetchData();
         }
     }
     componentDidUpdate() {
+        if (!this.props.isConnected.isConnected) {
+            console.log("!this.state.isConnected");
+            this.props.navigation.navigate('NotConnected');
+        }
+
         const items = this.props.items;
         const questions = this.state.questions.slice();
         const startedPracticing = this.state.isStartedPracticing;
@@ -84,8 +93,9 @@ class Practice extends Component {
         const questionD = questions[state.questionIndex];
         const {selectedIndex} = state;
         const startedPracticing = state.isStartedPracticing;
-        const loading = state.loading;
-        const errors = state.error;
+        const loading = this.props.loading;
+        const error = this.props.error;
+
 
 
 
@@ -93,15 +103,26 @@ class Practice extends Component {
         if (questionD !== undefined) {
             const germanWord = questionD.fields.german_word;
             const englishTranslation = questionD.fields.english_translation;
+            let btnColor = designByGender(state.buttons[selectedIndex]);
+            let btnSecondStyle = {borderColor:btnColor};
+            let btnText = {
+                color:btnColor,
+                fontSize:20
+            };
+
             return (
                 <View style={Styles.practiceContainer}>
                     <Text style={[style.h1,Styles.centerTxt]}>{germanWord}</Text>
                     <Text style={[style.h2,Styles.centerTxt]}>{englishTranslation}</Text>
 
                     <ButtonGroup
-                        onPress={this.updateIndex.bind(this)}
+                        onPress={this.updateIndex}
                         selectedIndex={selectedIndex}
                         buttons={state.buttons}
+                        containerStyle = {style.btnStyle}
+                        selectedButtonStyle = {[style.btnSelectedStyle,btnSecondStyle]}
+                        selectedTextStyle ={btnText}
+
                     />
 
                     <Button
@@ -116,7 +137,7 @@ class Practice extends Component {
             );
         }
         else {
-            if (errors)
+            if (error)
                 return (
                     <View>
                         <Text style={style.h1}>Error! {error.message}</Text>
@@ -158,17 +179,22 @@ class Practice extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
         items: state.data.items,
         loading: state.data.loading,
-        error: state.data.error
+        error: state.data.error,
+        isConnected: state.isConnected
     };
 };
 export default connect(mapStateToProps, actions)(Practice);
 const style = {
-
-    h2: {fontSize: 15},
-    h1: {fontSize: 25},
+    h2: {fontSize: 20},
+    h1: {fontSize: 40},
+    btnStyle:{
+        height:80
+    },
+    btnSelectedStyle: {
+        borderWidth:2,
+    }
 };
 

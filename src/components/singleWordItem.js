@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 
 import Styles from '../styleSheet';
-import {capitalizeFirstLetter} from '../constants';
+import {capitalizeFirstLetter,designByGender} from '../constants';
 
 class SingleWordItem extends Component {
     constructor(props) {
@@ -16,27 +16,8 @@ class SingleWordItem extends Component {
         const english = this.props.word.fields.english_translation;
 
 
-        let genderStyle;
-        switch (gender) {
-            case "Der":
-                genderStyle = {
-                    borderColor: '#58A4B0',
-
-                };
-                break;
-            case "Das":
-                genderStyle = {
-                    borderColor: '#1E6446'
-                };
-                break;
-
-            case "Die":
-                genderStyle = {
-                    borderColor: '#734B5E'
-                };
-                break;
-
-        }
+        let genderColor = designByGender(gender);
+        let genderStyle = {borderColor:genderColor};
 
 
         return (

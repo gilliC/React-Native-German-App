@@ -3,7 +3,7 @@ import {Text, View, ListView} from 'react-native';
 
 import {connect} from 'react-redux';
 
-import {fetchData} from '../actions/vocabularyActions';
+import {fetchData} from '../actions/vocabulary_actions';
 import SingleWordItem from './singleWordItem';
 import Styles from '../styleSheet';
 
@@ -15,7 +15,7 @@ class VocabularyList extends Component {
     }
 
     componentDidMount() {
-        if (this.props.items.length === 0) {
+        if (this.props.items.length === 0|| this.props.items.length<this.props.itemsCount) {
             this.props.fetchData();
         }
     }
@@ -71,6 +71,7 @@ const mapStateToProps = state => {
 
     return {
         items: state.data.items,
+        itemsCount: state.data.itemsCount,
         loading: state.data.loading,
         error: state.data.error
     };

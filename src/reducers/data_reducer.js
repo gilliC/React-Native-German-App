@@ -2,6 +2,7 @@ import {FETCH_DATA_BEGIN, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS} from '../const
 
 const initialState = {
     items: [],
+    itemsCount:0,
     loading: false,
     error: null
 };
@@ -19,6 +20,7 @@ export default function (state = initialState, action) {
         case FETCH_DATA_SUCCESS:
             return {
                 ...state,
+                itemsCount:action.payload.data.length,
                 loading: false,
                 items: action.payload.data
             };
@@ -28,7 +30,8 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 error: action.payload.error,
-                items: []
+                itemsCount:0,
+                items: [],
             };
 
         default:

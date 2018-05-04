@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import {Text, View} from 'react-native';
 import {ButtonGroup, Button, FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
+
 import {insertWord, clearAnswer} from '../actions/word_actions';
-import {fetchData} from '../actions/vocabularyActions'
+import {fetchData} from '../actions/vocabulary_actions'
 import Styles from '../styleSheet';
 
 class AddAWord extends Component {
@@ -24,6 +25,11 @@ class AddAWord extends Component {
     }
 
     componentDidUpdate() {
+        if (!this.props.isConnected.isConnected) {
+            console.log("!this.state.isConnected");
+            this.props.navigation.navigate('NotConnected');
+        }
+
         if (this.props.answer === "Succeed") {
             this.props.clearAnswer();
             this.props.fetchData();
@@ -94,8 +100,7 @@ const mapStateToProps = state => {
         loadingAnswer: state.answer.loading,
         errorAnswer: state.answer.error,
         items: state.data.items,
-        loading: state.data.loading,
-        error: state.data.error
+        isConnected: state.isConnected
     };
     //return the data in state (reducer). vocabulary as a prop under the key vocabulary
 

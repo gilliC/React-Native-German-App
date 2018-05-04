@@ -1,14 +1,37 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
+import {connect} from 'react-redux';
+import {Text, View, TouchableOpacity, NetInfo} from 'react-native';
 
+import {HandleConnectionChanged} from '../actions/connecting_actions';
 import Styles from '../styleSheet';
 
-export default class MainPage extends Component {
+class MainPage extends Component {
+    static navigationOptions = {
+        title: 'Home          ',
+    };
     constructor(props) {
         super(props);
-        this.onPressVocabulary=this.onPressVocabulary.bind(this);
-        this.onPressPractice=this.onPressPractice.bind(this);
+        this.state = {isConnected: true};
+        this.onPressVocabulary = this.onPressVocabulary.bind(this);
+        this.onPressPractice = this.onPressPractice.bind(this);
 
+    }
+    componentDidMount() {
+        NetInfo.addEventListener(
+            'connectionChange', this.props.HandleConnectionChanged
+        );
+        NetInfo.getConnectionInfo().then((connectionInfo) => {
+            console.log(connectionInfo);
+            if (connectionInfo.type === "unknown" || connectionInfo.type === "none")
+                console.log("none!!");
+            //this.props.navigation.navigate('NotConnected');
+        });
+    }
+    componentDidUpdate(){
+        if (!this.props.isConnected.isConnected) {
+            console.log("!this.state.isConnected");
+            this.props.navigation.navigate('NotConnected');
+        }
     }
 
     onPressVocabulary() {
@@ -28,7 +51,7 @@ export default class MainPage extends Component {
                     <TouchableOpacity onPress={this.onPressVocabulary} style={Styles.btn}>
                         <Text style={Styles.btnTxt}>Vocabulary</Text>
                     </TouchableOpacity>
-                    <Text style={[style.h1,Styles.centerTxt]}>Hello User!</Text>
+                    <Text style={[style.h1, Styles.centerTxt]}>Hello User!</Text>
                     <TouchableOpacity style={Styles.btn}>
                         <Text onPress={this.onPressPractice} style={Styles.btnTxt}>Practice</Text>
                     </TouchableOpacity>
@@ -38,6 +61,15 @@ export default class MainPage extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    console.log(state);
+    return {
+        isConnected: state.isConnected
+    };
+};
+
+export default connect(mapStateToProps, {HandleConnectionChanged})(MainPage);
 
 const style = {
     h1: {

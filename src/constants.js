@@ -5,6 +5,8 @@ export const FETCH_ANSWER_BEGIN = 'FETCH_ANSWER_BEGIN';
 export const FETCH_ANSWER_SUCCESS = 'FETCH_ANSWER_SUCCESS';
 export const FETCH_ANSWER_FAILURE = 'FETCH_ANSWER_FAILURE';
 export const CLEAR_ANSWER = 'CLEAR_ANSWER';
+export const CHANGED_CONNECTION = 'CHANGED_CONNECTION';
+
 export function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -15,4 +17,24 @@ export function handleErrors(response) {
         throw Error(response.statusText);
     }
     return response;
+}
+
+export function designByGender(gender) {
+    switch (gender) {
+        case "Der":
+            return  '#58A4B0';
+            break;
+        case "Das":
+            return'#1E6446';
+            break;
+
+        case "Die":
+            return  '#734B5E';
+            break;
+        default:
+            console.log("wrong gender:" + gender);
+            return;
+
+    }
+
 }
