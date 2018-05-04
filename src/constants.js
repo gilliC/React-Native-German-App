@@ -29,7 +29,7 @@ export function designByGender(gender) {
             break;
 
         case "Die":
-            return  '#734B5E';
+            return  '#AC7B84';
             break;
         default:
             console.log("wrong gender:" + gender);

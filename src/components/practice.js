@@ -9,7 +9,7 @@ import {capitalizeFirstLetter,designByGender} from '../constants';
 
 class Practice extends Component {
     static navigationOptions = {
-        title: 'Practice',
+        title: 'Practice     ',
     };
     constructor(props) {
         super(props);

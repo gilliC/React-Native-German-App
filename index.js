@@ -9,7 +9,6 @@ import Practice from './src/components/practice';
 import AddAWord from './src/components/addAWord';
 import NotConnected from './src/components/notConnected';
 
-import from './src/Icons/icon1.png'
 import Styles from './src/styleSheet';
 import store from './configureStore';
 
