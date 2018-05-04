@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import Styles from '../styleSheet';
 import * as actions from '../actions/vocabulary_actions';
-import {capitalizeFirstLetter,designByGender} from '../constants';
+import {designByGender} from '../constants';
 
 class Practice extends Component {
     static navigationOptions = {
@@ -69,7 +69,6 @@ class Practice extends Component {
         const state = this.state;
         const questionIndex = state.questionIndex;
         let gender = state.questions[questionIndex].fields.gender ;
-        gender = capitalizeFirstLetter(gender);
         if (gender === state.buttons[state.selectedIndex]) {
             let newQuestions = state.questions;
             newQuestions.splice(questionIndex, 1);
@@ -87,10 +86,9 @@ class Practice extends Component {
 
     render() {
 
-        const items = this.props.items;
         const state = this.state;
         const questions = state.questions;
-        const questionD = questions[state.questionIndex];
+        const questionDetail = questions[state.questionIndex];
         const {selectedIndex} = state;
         const startedPracticing = state.isStartedPracticing;
         const loading = this.props.loading;
@@ -100,15 +98,19 @@ class Practice extends Component {
 
 
 
-        if (questionD !== undefined) {
-            const germanWord = questionD.fields.german_word;
-            const englishTranslation = questionD.fields.english_translation;
+        if (questionDetail !== undefined) {
+            const germanWord = questionDetail.fields.german_word;
+            const englishTranslation = questionDetail.fields.english_translation;
             let btnColor = designByGender(state.buttons[selectedIndex]);
-            let btnSecondStyle = {borderColor:btnColor};
-            let btnText = {
+            let btnSelectedStyle = {borderColor:btnColor};
+            let btnSelectedTxt = {
                 color:btnColor,
                 fontSize:20
             };
+            let errorTextColor = designByGender(questionDetail.fields.gender);
+            const errorTxtStyle = {
+                color:errorTextColor,
+                fontSize:20};
 
             return (
                 <View style={Styles.practiceContainer}>
@@ -120,8 +122,8 @@ class Practice extends Component {
                         selectedIndex={selectedIndex}
                         buttons={state.buttons}
                         containerStyle = {style.btnStyle}
-                        selectedButtonStyle = {[style.btnSelectedStyle,btnSecondStyle]}
-                        selectedTextStyle ={btnText}
+                        selectedButtonStyle = {[style.btnSelectedStyle,btnSelectedStyle]}
+                        selectedTextStyle ={btnSelectedTxt}
 
                     />
 
@@ -131,7 +133,7 @@ class Practice extends Component {
                         title='Check'
                         onPress={this.onPress}
                     />
-                    <FormValidationMessage>{state.errors}</FormValidationMessage>
+                    <Text style = {[Styles.centerTxt,errorTxtStyle]}>{state.errors}</Text>
 
                 </View>
             );

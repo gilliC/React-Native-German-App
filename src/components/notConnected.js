@@ -6,9 +6,8 @@ import Styles from '../styleSheet';
 
  class NotConnected extends Component {
      static navigationOptions = {
-         title: 'ErrprH     ',
+         title: 'an error has occurred     ',
      };
-     cons
     constructor(props) {
         super(props);
 
@@ -26,7 +25,7 @@ import Styles from '../styleSheet';
         return (
             <View>
                 <Text style={[style.h1,Styles.centerTxt]}>NO INTERNET CONNECTION</Text>
-                <Text style={Styles.centerTxt}> The App cannot work without internet</Text>
+                <Text style={Styles.centerTxt}> The App cannot work without internet connection.</Text>
             </View>
 
         );

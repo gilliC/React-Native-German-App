@@ -5,11 +5,14 @@ import {Text, View} from 'react-native';
 import {ButtonGroup, Button, FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
 
 import {insertWord, clearAnswer} from '../actions/word_actions';
-import {fetchData} from '../actions/vocabulary_actions'
+import {fetchData} from '../actions/vocabulary_actions';
+import {designByGender} from '../constants';
 import Styles from '../styleSheet';
 
 class AddAWord extends Component {
-
+    static navigationOptions = {
+        title: 'Add A Word     ',
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -54,6 +57,12 @@ class AddAWord extends Component {
     render() {
 
         const {selectedIndex, buttons} = this.state;
+        let btnColor = designByGender(buttons[selectedIndex]);
+        let btnSelectedStyle = {borderColor:btnColor};
+        let btnSelectedTxt = {
+            color:btnColor,
+            fontSize:20
+        };
         return (
             <View>
                 <Text style={[style.h1, Styles.centerTxt]}>Add A Word</Text>
@@ -67,7 +76,12 @@ class AddAWord extends Component {
                     <ButtonGroup
                         onPress={this.updateIndex}
                         selectedIndex={selectedIndex}
-                        buttons={buttons}/>
+                        buttons={buttons}
+                        containerStyle = {style.btnStyle}
+                        selectedButtonStyle = {[style.btnSelectedStyle,btnSelectedStyle]}
+                        selectedTextStyle ={btnSelectedTxt}
+
+                    />
                 </View>
                 <Button
                     raised
@@ -75,6 +89,7 @@ class AddAWord extends Component {
                     backgroundColor='#1D3767'
                     title='Add'
                     onPress={this.onSendingForm}
+                    buttonStyle = {style.btnStyle}
                 />
                 <FormValidationMessage>{this.props.errorAnswer}</FormValidationMessage>
                 <Text style={Styles.centerTxt}>{this.props.answer}</Text>
@@ -113,5 +128,11 @@ const style = {
     h1: {
         fontSize: 20,
         padding: 10
+    },
+    btnStyle:{
+        height:50
+    },
+    btnSelectedStyle: {
+        borderWidth:2,
     }
 };

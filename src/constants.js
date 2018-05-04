@@ -20,6 +20,7 @@ export function handleErrors(response) {
 }
 
 export function designByGender(gender) {
+    gender = capitalizeFirstLetter(gender);
     switch (gender) {
         case "Der":
             return  '#58A4B0';
